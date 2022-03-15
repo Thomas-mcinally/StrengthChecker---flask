@@ -3,7 +3,11 @@ Code for StrengthChecker webapplication
 - A website to easily be able to compare your SBD results to other lifters
 
 TODO:
-- Limit user inputs
+- Align input boxes
+    -https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html
+    -https://www.youtube.com/watch?v=0afZj1G0BIE
+    -CANT FIGURE OUT HOW TO GET test.html to use the style sheet
+- Make equipment category optional
 - Improve aesthetics
 - Get more balanced dataset
 '''
@@ -136,6 +140,10 @@ def results():
 @app.route('/deadlifts')
 def deadlifts():
     return render_template('deadlifts.html')
+
+@app.route('/test')
+def test():
+    return render_template('test.html')
 
 
 if __name__=='__main__':

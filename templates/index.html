@@ -8,10 +8,16 @@
             <p>Squat(kg) <input type = "number" name = "Squat" /></p>
             <p>Bench(kg) <input type = "number" name = "Bench" /></p>
             <p>Deadlift(kg) <input type = "number" name = "Deadlift" /></p>
-            <p>Sex(M/F) <input type = "text" name = "Sex" /></p>
             <p>Age <input type = "number" name = "Age" /></p>
             <p>Bodyweight(kg) <input type = "number" name = "Bodyweight" /></p>
-            <p>Equipment <input type = "text" name = "Equipment" /></p>
+            <p>Equipment <select name="Equipment">
+                <option value="Raw">Raw</option>
+                <option value="Single-ply">Single-ply</option>
+              </select></p>
+            <p>Sex(M/F) <select name="Sex">
+                <option value="M">M</option>
+                <option value="F">F</option>
+              </select></p>
             <p><input type = "submit" value = "submit" /></p>
         </form>
 {% endblock %}
