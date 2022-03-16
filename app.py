@@ -3,8 +3,7 @@ Code for StrengthChecker webapplication
 - A website to easily be able to compare your SBD results to other lifters
 
 TODO:
--Add redirect page?
-    -Not sure if needed
+-Get error first time I press submit (sometimes), FIX
     -First time i submit i got before results page error, 
         ,i think because python calculations take too long 
         (not ready by the time results page request them)
