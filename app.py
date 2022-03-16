@@ -3,13 +3,22 @@ Code for StrengthChecker webapplication
 - A website to easily be able to compare your SBD results to other lifters
 
 TODO:
-- Align input boxes
-    -https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html
-    -https://www.youtube.com/watch?v=0afZj1G0BIE
-    -CANT FIGURE OUT HOW TO GET test.html to use the style sheet
-- Make equipment category optional
+-Add redirect page?
+    -First time i submit i got before results page error, 
+        ,i think because python calculations take too long 
+        (not ready by the time results page request them)
+
 - Improve aesthetics
+    - Align input boxes
+        -https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html
+        -https://www.youtube.com/watch?v=0afZj1G0BIE
+        -CANT FIGURE OUT HOW TO GET test.html to use the style sheet
+
 - Get more balanced dataset
+
+- Limit input values
+    -for example: blank input gives errors
+
 '''
 from flask import Flask, render_template, request
 import pandas as pd
