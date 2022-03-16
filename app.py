@@ -4,6 +4,7 @@ Code for StrengthChecker webapplication
 
 TODO:
 -Add redirect page?
+    -Not sure if needed
     -First time i submit i got before results page error, 
         ,i think because python calculations take too long 
         (not ready by the time results page request them)
