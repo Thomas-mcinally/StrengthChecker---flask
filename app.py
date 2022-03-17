@@ -9,12 +9,9 @@ TODO:
         (not ready by the time results page request them)
 
 - Improve aesthetics
-    - Align input boxes
-        -https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html
-        -https://www.youtube.com/watch?v=0afZj1G0BIE
-        -CANT FIGURE OUT HOW TO GET test.html to use the style sheet
-
-    - Put Sex/age side by side
+    - Add navigation bar at top
+    - Make submit button sexy
+    - Make results page sexy
 
 - Get more balanced dataset
 

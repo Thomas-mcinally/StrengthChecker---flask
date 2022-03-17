@@ -2,27 +2,55 @@
 
 
 {% block content %}
-    <h1>Welcome to StrengthChecker</h1>
-        <p>Easily compare your SBD strength to IPF contestants</p>
-        <br />
-        <form action="/results" method = "POST">
-            <p>Squat(kg) <input type = "number" name = "Squat" /></p>
-            <p>Bench(kg) <input type = "number" name = "Bench" /></p>
-            <p>Deadlift(kg) <input type = "number" name = "Deadlift" /></p>
-            <p>Age <input type = "number" name = "Age" /></p>
-            <p>Bodyweight(kg) <input type = "number" name = "Bodyweight" /></p>
-            <p>Equipment <select name="Equipment">
-                <option value="Raw">Raw</option>
-                <option value="Single-ply">Single-ply</option>
-              </select></p>
-            <p>Sex(M/F) <select name="Sex">
-                <option value="M">M</option>
-                <option value="F">F</option>
-              </select></p>
-            <p><input type = "submit" value = "Submit" /></p>
+<div id="header">
+  <h1>Check how you compare to IPF athletes</h1>
+</div>
 
-        <img src="{{url_for('static', filename='images/mypic.png')}}" />
+<center>
+<div id="input_form">
+  <form action="/results" method="POST">
+      <p>
+        <label>Bodyweight(kg):</label>
+        <input name="Bodyweight" type="number">
+      </p>
+      <p>
+        <label>Age:</label>
+        <input name="Age" type="number">
+      </p>
+      <p>
+          <label>Sex:</label>
+          <select name="Sex">
+              <option value="M">M</option>
+              <option value="F">F</option>
+          </select>
+      </p>
+      <p>
+          <label for="b">Equipment:</label>
+          <select name="Equipment">
+              <option value="Raw">Raw</option>
+              <option value="Single-ply">Single-ply</option>
+            </select>
+      </p>
+      <p>
+          <label >Squat:</label>
+          <input name="Squat" type="number">
+      </p>
+      <p>
+          <label>Bench:</label>
+          <input name="Bench" type="number">
+      </p>
+      <p>
+          <label>Deadlift:</label>
+          <input name="Deadlift" type="number">
+      </p>
+      <p><input type = "submit" value = "Submit" /></p>
+  </form>
+</div>
+</center>
 
+<div id="footer">
+  <p>Copyright &copy; 2022 Thomas McInally</p>
+</div>
         
 {% endblock %}
 

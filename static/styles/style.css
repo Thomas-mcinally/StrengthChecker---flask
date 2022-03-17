@@ -19,12 +19,13 @@ body{
 
 #input_form{
     background-color:white;
-    text-align:center;
+
 }
 
 
 #input_form form  { 
-    display: table;  
+    display: table;
+    align-items: center; 
     }
 #input_form p     {
     display: table-row; 
@@ -36,6 +37,11 @@ body{
 #input_form input {
     display: table-cell;
     text-align:center
+}
+#input_form select {
+    display: table-cell;
+    text-align:center;
+    width:100%;
 }
 
 #footer{
