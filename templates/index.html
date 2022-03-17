@@ -8,7 +8,7 @@
 
 <center>
 <div id="input_form">
-  <form action="/results" method="POST">
+  <form id ="myform" action="/results" method="POST">
       <p>
         <label>Bodyweight(kg):</label>
         <input name="Bodyweight" type="number">
@@ -43,8 +43,14 @@
           <label>Deadlift:</label>
           <input name="Deadlift" type="number">
       </p>
-      <p><input type = "submit" value = "Submit" /></p>
   </form>
+  <br />
+  <div id="submit_button">
+    <input type="submit" form="myform" value="Calculate strength"/>
+  </div>
+  <br />
+  
+  
 </div>
 </center>
 

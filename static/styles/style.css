@@ -1,5 +1,6 @@
 body{
     background-color: rgb(187, 187, 187);
+    /*background-image: url('/static/images/bg4.png');*/
 }
 
 
@@ -12,7 +13,7 @@ body{
 }
 
 #header {
-    background-color:rgb(32, 32, 124);
+    background-color:rgb(41, 41, 75);
     text-align:center;
     color:white;
 }
@@ -34,15 +35,23 @@ body{
     display: table-cell;
     text-align:left
 }
-#input_form input {
+#input_form input[type=number] {
     display: table-cell;
     text-align:center
 }
+
 #input_form select {
     display: table-cell;
     text-align:center;
     width:100%;
 }
+
+#submit_button input[type=submit]{
+    background-color: rgb(77, 73, 73);
+    color:white;
+}
+
+
 
 #footer{
     background-color: #999999;
@@ -50,3 +59,24 @@ body{
     color:white;
     padding: 2px;
 }
+
+
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(77, 73, 73);
+    font-size:x-large;
+  }
+  
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+  

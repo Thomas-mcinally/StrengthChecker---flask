@@ -9,14 +9,16 @@ TODO:
         (not ready by the time results page request them)
 
 - Improve aesthetics
-    - Add navigation bar at top
-    - Make submit button sexy
+    - Get nice background picture
     - Make results page sexy
 
 - Get more balanced dataset
 
 - Limit input values
     -for example: blank input gives errors
+
+- Dockerise?
+- Host?
 
 '''
 from flask import Flask, render_template, request
