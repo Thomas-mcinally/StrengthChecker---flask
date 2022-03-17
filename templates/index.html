@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
-    <h1>{% block title %} Welcome to StrengthChecker {% endblock %}</h1>
+    <h1>Welcome to StrengthChecker</h1>
         <p>Easily compare your SBD strength to IPF contestants</p>
-        <br>
+        <br />
         <form action="/results" method = "POST">
             <p>Squat(kg) <input type = "number" name = "Squat" /></p>
             <p>Bench(kg) <input type = "number" name = "Bench" /></p>
@@ -18,7 +19,10 @@
                 <option value="M">M</option>
                 <option value="F">F</option>
               </select></p>
-            <p><input type = "submit" value = "submit" /></p>
-        </form>
+            <p><input type = "submit" value = "Submit" /></p>
+
+        <img src="{{url_for('static', filename='images/mypic.png')}}" />
+
+        
 {% endblock %}
 

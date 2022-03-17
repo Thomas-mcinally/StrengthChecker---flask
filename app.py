@@ -14,6 +14,8 @@ TODO:
         -https://www.youtube.com/watch?v=0afZj1G0BIE
         -CANT FIGURE OUT HOW TO GET test.html to use the style sheet
 
+    - Put Sex/age side by side
+
 - Get more balanced dataset
 
 - Limit input values
