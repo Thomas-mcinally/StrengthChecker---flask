@@ -1,19 +1,19 @@
 # start by pulling the python image
 FROM python:3.8
 
-# switch working directory
+# define working directory for container
 WORKDIR /app
 
-# install the dependencies and packages in the requirements file
+# install dependencies
 RUN pip install cython
 RUN pip install numpy
 RUN pip install pandas
 RUN pip install flask
 
-# copy every content from the local folder to the image
+# copy files from local folder to container
 COPY . /app
 
-# configure the container to run in an executed manner
+# code to run webapplication
 ENTRYPOINT [ "python" ]
 CMD ["app.py" ]
 
