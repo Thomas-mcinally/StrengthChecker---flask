@@ -2,6 +2,7 @@
 
 StengthChecker is a webapplication which enables users to compare their Squat/Bench/Deadlift numbers to people of same sex, age group and weightclass
 
+This service uses data from the OpenPowerlifting project, https://www.openpowerlifting.org.
 ## Preview of index and result pages
 
 ![](static/images/Home_page.JPG)
