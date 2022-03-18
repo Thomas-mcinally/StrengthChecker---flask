@@ -2,6 +2,11 @@
 
 StengthChecker is a webapplication which enables users to compare their Squat/Bench/Deadlift numbers to people of same sex, age group and weightclass
 
+**Home page**
+![](static/images/Home_page.JPG)
+
+**Results page**
+![](static/images/results_page.JPG)
 
 ## Steps to run locally
 1. python setup.py install
