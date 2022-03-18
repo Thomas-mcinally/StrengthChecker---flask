@@ -1,25 +1,9 @@
 '''
-Code for StrengthChecker webapplication
-- A website to easily be able to compare your SBD results to other lifters
-
 TODO:
--Get error first time I press submit (sometimes), FIX
-    -First time i submit i got before results page error, 
-        ,i think because python calculations take too long 
-        (not ready by the time results page request them)
-
-- Improve aesthetics
-    - Get nice background picture
-    - Make results page sexy
-
 - Get more balanced dataset
 
 - Limit input values
     -for example: blank input gives errors
-
-- Dockerise?
-- Host?
-
 '''
 from flask import Flask, render_template, request
 import pandas as pd
@@ -32,10 +16,11 @@ def calculate_results(form_data:dict):
     Function to take in form_data dictionary and return dictionary with squat, bench deadlift score 
     
     Parameters:
-        form_data (dict) - 
+        form_data (dict) - Dictionary containing values from input form
 
     Returns:
-        results (dict) - 
+        results (dict) - Dictionary containing users sex, age, weight and equipment categories,
+                         in addition to squat, bench and deadlift strength scores
     '''
     user_equipment = form_data['Equipment']
     user_sex = form_data['Sex']
@@ -131,13 +116,6 @@ def index():
 #result page
 @app.route('/results', methods = ['POST', 'GET'])
 def results():
-    '''
-    Note: request.form has a dictionary structure:
-    form_data = {
-        'field1_name' : 'field1_value',
-        'field2_name' : 'field2_value',
-        }
-    '''
     if request.method == 'GET':
         return render_template('results_unavailable.html')
     if request.method == 'POST':
