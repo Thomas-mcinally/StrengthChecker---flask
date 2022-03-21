@@ -1,10 +1,3 @@
-'''
-TODO:
-- Get more balanced dataset
-
-- Limit input values
-    -for example: blank input gives errors
-'''
 from flask import Flask, render_template, request
 import pandas as pd
 import sqlite3
