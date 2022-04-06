@@ -10,7 +10,7 @@ This service uses data from the OpenPowerlifting project, https://www.openpowerl
 ![](static/images/results_page.JPG)
 
 ## Steps to run locally
-1. python setup.py install
+1. pip install -r requirements.txt
 2. python app.py
 
 ## Steps to run with Docker
