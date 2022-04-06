@@ -1,9 +1,8 @@
-from flask import Flask, render_template, request
+import flask
 import pandas as pd
-from pandas import DataFrame
 import sqlite3
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
 def calculate_results(form_data:dict) -> dict:
     '''
@@ -68,13 +67,13 @@ def calculate_results(form_data:dict) -> dict:
 
     return results
 
-def get_data_tables(sex:str) -> DataFrame:
+def get_data_tables(sex:str) -> pd.DataFrame:
     '''
     Function to read data stored in sql-lite database file 'database.db'
     Parameters:
         sex (str) - 'M' or 'F'
     Returns:
-        df (Pandas dataframe) - Dataframe containing data about lifters in this sex category
+        df (pd.DataFrame) - Pandas dataframe containing data about lifters in this sex category
     '''
 
     database = sqlite3.connect('database.db')
@@ -89,19 +88,19 @@ def get_data_tables(sex:str) -> DataFrame:
 #startpage
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return flask.render_template('index.html')
 
 #result page
 @app.route('/results', methods = ['POST', 'GET'])
 def results():
-    if request.method == 'GET':
+    if flask.request.method == 'GET':
         #user tries to access results URL directly
-        return render_template('results_unavailable.html')
-    if request.method == 'POST':
+        return flask.render_template('results_unavailable.html')
+    if flask.request.method == 'POST':
         #user tries to access results URL through data submission form
-        form_data = request.form.copy()
+        form_data = flask.request.form.copy()
         results = calculate_results(form_data)
-        return render_template('results.html',results = results)
+        return flask.render_template('results.html',results = results)
 
 
 if __name__=='__main__':
