@@ -7,15 +7,17 @@
 </div>
 
 <center>
+  
 <div id="input_form">
+  
   <form id ="myform" action="/results" method="POST">
       <p>
         <label>Bodyweight(kg):</label>
-        <input name="Bodyweight" type="number">
+        <input id="bodyweight" name="Bodyweight" type="number">
       </p>
       <p>
         <label>Age:</label>
-        <input name="Age" type="number">
+        <input id="age" name="Age" type="number">
       </p>
       <p>
           <label>Sex:</label>
@@ -33,25 +35,26 @@
       </p>
       <p>
           <label >Squat(kg):</label>
-          <input name="Squat" type="number">
+          <input id="squat" name="Squat" type="number">
       </p>
       <p>
           <label>Bench(kg):</label>
-          <input name="Bench" type="number">
+          <input id="bench" name="Bench" type="number">
       </p>
       <p>
           <label>Deadlift(kg):</label>
-          <input name="Deadlift" type="number">
+          <input id="deadlift" name="Deadlift" type="number">
       </p>
   </form>
   <br />
   <div id="submit_button">
     <input type="submit" form="myform" value="Calculate strength"/>
   </div>
+  <div id="error"></div>
   <br />
   
-  
 </div>
-</center>       
+</center>
+
 {% endblock %}
 

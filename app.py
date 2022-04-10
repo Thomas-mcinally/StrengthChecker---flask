@@ -85,12 +85,10 @@ def get_data_tables(sex:str) -> pd.DataFrame:
 
 
 
-#startpage
 @app.route('/')
 def index():
     return flask.render_template('index.html')
 
-#result page
 @app.route('/results', methods = ['POST', 'GET'])
 def results():
     if flask.request.method == 'GET':
