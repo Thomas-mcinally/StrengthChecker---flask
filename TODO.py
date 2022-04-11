@@ -2,8 +2,7 @@
 TODO:
 - Get more balanced dataset
 
-- Limit input values
-    -for example: blank input gives errors
+- Fix edge cases (i.e. only 1 person in group)
 
 - Make nice graphic to visualize results
 '''
