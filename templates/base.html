@@ -1,25 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
-  
   <head>
     <title>StrengthChecker</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     <script defer src="{{url_for('static', filename='javascript/script.js')}}"></script>
+
   </head>
 
-  <body>
-    <ul>
-      <li><a href="/">StrengthChecker</a></li>
-    </ul>
-    
-    <div id="container">
-        {% block content %} 
-        {% endblock %}
-        <div id="footer">
-          <p>Copyright &copy; 2022 Thomas McInally</p>
-        </div>
-    </div>
-  </body>
 
-  
+<body>
+  <div class="wrapper">
+    <ul>
+        <li><a href="/">StrengthChecker</a></li>
+    </ul>
+    {% block content %} 
+    {% endblock %}
+  </div>
+</body>
 </html>

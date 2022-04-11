@@ -2,17 +2,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Your results</h1>
+    <h2>Your results</h2>
     <p>Sex category: {{results['sex_category']}}</p>
     <p>Age category: {{results['age_category']}}</p>
     <p>Weight category: {{results['weight_category']}}</p>
     <p>Equipment category: {{results['equipment_category']}}</p>
     <br>
-    <p>Your Squat is stronger than <strong>{{results['squat_result']}}</strong> of people in your category!</p>
-    <p>Your Bench is stronger than <strong>{{results['bench_result']}}</strong> of people in your category!</p>
-    <p>Your Deadlift is stronger than <strong>{{results['deadlift_result']}}</strong> of people in your category!</p>
+    <strong><p>Within your category:</p></strong>
+    <p>You Squat more than <strong>{{results['squat_result']}}</strong> of people!</p>
+    <p>You Bench more than <strong>{{results['bench_result']}}</strong> of people!</p>
+    <p>You Deadlift more than <strong>{{results['deadlift_result']}}</strong> of people!</p>
     <br>
-    <p>Your Total is stronger than <strong>{{results['total_result']}}</strong> of people in your category!</p>
+    <p>Your Total is higher than <strong>{{results['total_result']}}</strong> of people!</p>
 {% endblock %}
 
 

@@ -4,7 +4,7 @@ const squat = document.getElementById('squat');
 const bench = document.getElementById('bench');
 const deadlift = document.getElementById('deadlift');
 const submit_button = document.getElementById('submit_button');
-const errorElement = document.getElementById('error');
+const errorElement = document.getElementById('invalid_input_error');
 
 
 
@@ -35,7 +35,7 @@ submit_button.addEventListener('click', e => {
     //can't calculate results without all fields filled in
     if (empty_fields.length > 0) {
         e.preventDefault(); 
-        errorElement.innerText = 'The following fields are required: '.concat(empty_fields.join(', '));
+        errorElement.innerText = 'Missing: '.concat(empty_fields.join(', '));
     }
     
 })
