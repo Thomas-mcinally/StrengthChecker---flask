@@ -4,76 +4,15 @@ import sqlite3
 
 app = flask.Flask(__name__)
 
-def calculate_results(form_data:dict) -> dict:
-    '''
-    Function to take in form_data dictionary and return dictionary with squat, bench deadlift score 
-    
-    Parameters:
-        form_data (dict) - Dictionary containing values from input form
-
-    Returns:
-        results (dict) - Dictionary containing users sex, age, weight and equipment categories,
-                         in addition to squat, bench and deadlift strength scores
-    '''
-    user_equipment = form_data['Equipment']
-    user_sex = form_data['Sex']
-    user_age = float(form_data['Age'])
-    user_weight = float(form_data['Bodyweight'])
-    user_squat = float(form_data['Squat'])
-    user_bench = float(form_data['Bench'])
-    user_deadlift = float(form_data['Deadlift'])
-    user_total = user_bench + user_squat + user_deadlift
-
-    #Define dataframe with user data
-    user_df = pd.DataFrame({'Sex': [user_sex], 'Equipment': [user_equipment], 'Age': [user_age], 'BodyweightKg': [user_weight], 'Best3SquatKg': [user_squat], 'Best3BenchKg': [user_bench], 'Best3DeadliftKg': [user_deadlift], 'TotalKg': [user_total]})
-
-    weight_cutoffs = {'F':[0,47,52,57,63,69,76,84,1000], 'M':[0,59,66,74,83,93,105,120,1000]}
-    weight_labels = {'F':['47kg','52kg','57kg','63kg','69kg','76kg','84kg','84kg+'],'M':['59kg','66kg','74kg','83kg','93kg','105kg','120kg','120kg+']}
-    user_df['weight_bin'] = pd.cut(user_df['BodyweightKg'], bins=weight_cutoffs[user_sex], labels=weight_labels[user_sex])
-
-    cutoff_age = [15,20,25,30,35,40,45,50,55,60,100]
-    age_labels = ['15-20','20-25','25-30','30-35','35-40','40-45','45-50','50-55','55-60','60-100']
-    user_df['age_bin'] = pd.cut(user_df['Age'], bins=cutoff_age, labels=age_labels)
-
-
-    #Calculate how user compares to historic data
-    historic_data_df = get_data_tables(user_sex)
-
-    people_in_group = len(historic_data_df[(historic_data_df['age_bin'] == user_df.loc[0,'age_bin']) & (historic_data_df['weight_bin'] == user_df.loc[0,'weight_bin']) & (historic_data_df['equipment'] == user_equipment)])
-    #squat analysis
-    people_with_lower_squat = len(historic_data_df[(historic_data_df['best3SquatKg'] < user_squat ) & (historic_data_df['age_bin'] == user_df.loc[0,'age_bin']) & (historic_data_df['weight_bin'] == user_df.loc[0,'weight_bin']) & (historic_data_df['equipment'] == user_equipment)])
-    squat_result = str(round(people_with_lower_squat/people_in_group *100,1))+'%'
-    #bench analysis
-    people_with_lower_bench = len(historic_data_df[(historic_data_df['best3BenchKg'] < user_bench) & (historic_data_df['age_bin'] == user_df.loc[0,'age_bin']) & (historic_data_df['weight_bin'] == user_df.loc[0,'weight_bin']) & (historic_data_df['equipment'] == user_equipment)])
-    bench_result = str(round(people_with_lower_bench/people_in_group *100,1))+'%'
-    #deadlift analysis
-    people_with_lower_deadlift = len(historic_data_df[(historic_data_df['best3DeadliftKg'] < user_deadlift) & (historic_data_df['age_bin'] == user_df.loc[0,'age_bin']) & (historic_data_df['weight_bin'] == user_df.loc[0,'weight_bin']) & (historic_data_df['equipment'] == user_equipment)])
-    deadlift_result = str(round(people_with_lower_deadlift/people_in_group *100,1))+'%'
-    #total analysis
-    people_with_lower_total = len(historic_data_df[(historic_data_df['totalKg'] < user_total) & (historic_data_df['age_bin'] == user_df.loc[0,'age_bin']) & (historic_data_df['weight_bin'] == user_df.loc[0,'weight_bin']) & (historic_data_df['equipment'] == user_equipment)])
-    total_result = str(round(people_with_lower_total/people_in_group *100,1))+'%'
-
-
-    results = {
-        'squat_result':squat_result,
-        'bench_result':bench_result,
-        'deadlift_result':deadlift_result,
-        'total_result':total_result,
-        'equipment_category':user_equipment,
-        'sex_category':user_sex,
-        'age_category':user_df.loc[0,'age_bin'],
-        'weight_category':user_df.loc[0,'weight_bin']
-    }
-
-    return results
-
 def get_data_tables(sex:str) -> pd.DataFrame:
     '''
     Function to read data stored in sql-lite database file 'database.db'
+
     Parameters:
-        sex (str) - 'M' or 'F'
+        sex - 'M' or 'F'
+
     Returns:
-        df (pd.DataFrame) - Pandas dataframe containing data about lifters in this sex category
+        df - Dataframe containing data about lifters in this sex category
     '''
 
     database = sqlite3.connect('database.db')
@@ -81,7 +20,86 @@ def get_data_tables(sex:str) -> pd.DataFrame:
         df = pd.read_sql_query("SELECT * FROM male_lifters", database)
     elif sex =='F':
         df = pd.read_sql_query("SELECT * FROM female_lifters", database)
+
     return df
+
+def find_weight_bin(weight:float, sex:str) -> str:
+    '''
+    Find which weight group a user belongs to
+    '''
+    weight_cutoffs = {
+        'F':[0, 47, 52, 57, 63, 69, 76, 84, 1000], 
+        'M':[0, 59, 66, 74, 83, 93, 105, 120, 1000]
+    }
+    weight_labels = {
+        'F':['47kg', '52kg', '57kg', '63kg', '69kg', '76kg', '84kg', '84kg+'], 
+        'M':['59kg', '66kg', '74kg', '83kg', '93kg', '105kg', '120kg', '120kg+']
+    }
+
+    if weight==0:
+        return weight_labels[sex][0]
+    else:
+        for i, y in enumerate(weight_cutoffs[sex]):
+            if y >= weight:
+                return weight_labels[sex][i-1]
+
+def find_age_bin(age:float) -> str:
+    '''
+    Find which age group a user belongs to
+    '''
+    cutoff_age = [0, 20, 25, 30, 35, 40, 45, 50, 55, 60, 1000]
+    age_labels = ['15-20', '20-25', '25-30', '30-35', '35-40', '40-45', '45-50', '50-55', '55-60', '60+']
+    if age==0:
+        return age_labels[0]
+    else:
+        for i, y in enumerate(cutoff_age):
+            if y >= age:
+                return age_labels[i-1]
+
+def calculate_results(form_data:dict) -> dict:
+    '''
+    Function to take in form_data dictionary and return dictionary with squat, bench deadlift score 
+    
+    Parameters:
+        form_data - Dictionary containing values from input form
+
+    Returns:
+        user_data - Dictionary containing all information about user, including results
+    '''
+    user_data = {
+        'equipment' : form_data['Equipment'],
+        'sex' : form_data['Sex'],
+        'age' : float(form_data['Age']),
+        'weight' : float(form_data['Bodyweight']),
+        'best3SquatKg' : float(form_data['Squat']),
+        'best3BenchKg' : float(form_data['Bench']),
+        'best3DeadliftKg' : float(form_data['Deadlift']),
+        'totalKg' : float(form_data['Squat']) + float(form_data['Bench']) + float(form_data['Deadlift']),
+        'age_bin' : find_age_bin(float(form_data['Age'])),
+        'weight_bin' : find_weight_bin(float(form_data['Bodyweight']), form_data['Sex'])
+    }
+
+    historic_data_df = get_data_tables(user_data['sex'])
+
+    people_in_group = len(historic_data_df[
+        (historic_data_df['age_bin'] == user_data['age_bin']) 
+        & (historic_data_df['weight_bin'] == user_data['weight_bin']) 
+        & (historic_data_df['equipment'] == user_data['equipment'])
+    ])
+
+   
+    for lift in ['best3SquatKg','best3BenchKg','best3DeadliftKg','totalKg']:
+        people_with_lower_lift = len(historic_data_df[
+            (historic_data_df[lift] < user_data[lift]) 
+            & (historic_data_df['age_bin'] == user_data['age_bin']) 
+            & (historic_data_df['weight_bin'] == user_data['weight_bin']) 
+            & (historic_data_df['equipment'] == user_data['equipment'])
+        ])
+        lift_result = str(round(people_with_lower_lift/people_in_group *100, 1))+'%'
+
+        user_data[lift+'_result'] = lift_result        
+
+    return user_data
 
 
 
@@ -98,7 +116,7 @@ def results():
         #user tries to access results URL through data submission form
         form_data = flask.request.form.copy()
         results = calculate_results(form_data)
-        return flask.render_template('results.html',results = results)
+        return flask.render_template('results.html', results = results)
 
 
 if __name__=='__main__':
