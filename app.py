@@ -36,7 +36,7 @@ def find_weight_bin(weight:float, sex:str) -> str:
         'M':['59kg', '66kg', '74kg', '83kg', '93kg', '105kg', '120kg', '120kg+']
     }
 
-    if weight==0:
+    if weight == 0:
         return weight_labels[sex][0]
     else:
         for i, y in enumerate(weight_cutoffs[sex]):
@@ -49,7 +49,7 @@ def find_age_bin(age:float) -> str:
     '''
     cutoff_age = [0, 20, 25, 30, 35, 40, 45, 50, 55, 60, 1000]
     age_labels = ['15-20', '20-25', '25-30', '30-35', '35-40', '40-45', '45-50', '50-55', '55-60', '60+']
-    if age==0:
+    if age == 0:
         return age_labels[0]
     else:
         for i, y in enumerate(cutoff_age):
@@ -95,9 +95,9 @@ def calculate_results(form_data:dict) -> dict:
             & (historic_data_df['weight_bin'] == user_data['weight_bin']) 
             & (historic_data_df['equipment'] == user_data['equipment'])
         ])
-        lift_result = str(round(people_with_lower_lift/people_in_group *100, 1))+'%'
+        lift_result = str(round(people_with_lower_lift/people_in_group * 100, 1)) + '%'
 
-        user_data[lift+'_result'] = lift_result        
+        user_data[lift + '_result'] = lift_result        
 
     return user_data
 
