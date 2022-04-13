@@ -6,13 +6,13 @@ app = flask.Flask(__name__)
 
 def get_data_tables(sex:str) -> pd.DataFrame:
     '''
-    Function to read data stored in sql-lite database file 'database.db'
+    Returns historic data from 'database.db', for the given sex.
 
-    Parameters:
-        sex - 'M' or 'F'
+        Parameters:
+            sex (str): 'M' or 'F'
 
-    Returns:
-        df - Dataframe containing data about lifters in this sex category
+        Returns:
+            df (pd.DataFrame): Dataframe containing data about lifters in this sex category
     '''
 
     database = sqlite3.connect('database.db')
@@ -25,7 +25,14 @@ def get_data_tables(sex:str) -> pd.DataFrame:
 
 def find_weight_bin(weight:float, sex:str) -> str:
     '''
-    Find which weight group a user belongs to
+    Finds which weight group a user belongs to.
+
+        Parameters:
+            weight (float): weight of user
+            sex (str): sex of user
+
+        Returns:
+            weight_group (str): weight bin of user
     '''
     weight_cutoffs = {
         'F':[0, 47, 52, 57, 63, 69, 76, 84, 1000], 
@@ -45,7 +52,13 @@ def find_weight_bin(weight:float, sex:str) -> str:
 
 def find_age_bin(age:float) -> str:
     '''
-    Find which age group a user belongs to
+    Finds which age group a user belongs to.
+
+        Parameters:
+            age (float): age of user
+
+        Returns:
+            age_group (str): age group of user
     '''
     cutoff_age = [0, 20, 25, 30, 35, 40, 45, 50, 55, 60, 1000]
     age_labels = ['15-20', '20-25', '25-30', '30-35', '35-40', '40-45', '45-50', '50-55', '55-60', '60+']
@@ -58,13 +71,13 @@ def find_age_bin(age:float) -> str:
 
 def calculate_results(form_data:dict) -> dict:
     '''
-    Function to take in form_data dictionary and return dictionary with squat, bench deadlift score 
+    Takes in data from input form and returns dictionary with squat, bench deadlift score. 
     
-    Parameters:
-        form_data - Dictionary containing values from input form
+        Parameters:
+            form_data (dict): Dictionary containing values from input form
 
-    Returns:
-        user_data - Dictionary containing all information about user, including results
+        Returns:
+            user_data (dict): Dictionary containing all information about user, including results
     '''
     user_data = {
         'equipment' : form_data['Equipment'],
