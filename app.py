@@ -94,9 +94,10 @@ def calculate_results(form_data:dict) -> dict:
 
     historic_data_df = get_data_tables(user_data['sex'])
 
-    people_in_group = len(historic_data_df[(historic_data_df['age_bin'] == user_data['age_bin']) &
-                                           (historic_data_df['weight_bin'] == user_data['weight_bin']) &
-                                           (historic_data_df['equipment'] == user_data['equipment'])])
+    #user is in the group
+    people_in_group = 1 + len(historic_data_df[(historic_data_df['age_bin'] == user_data['age_bin']) &
+                                               (historic_data_df['weight_bin'] == user_data['weight_bin']) &
+                                               (historic_data_df['equipment'] == user_data['equipment'])])
 
     for lift in ['best3SquatKg','best3BenchKg','best3DeadliftKg','totalKg']:
         people_with_lower_lift = len(historic_data_df[(historic_data_df[lift] < user_data[lift]) & 
