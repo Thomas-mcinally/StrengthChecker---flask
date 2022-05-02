@@ -1,3 +1,4 @@
+Try it out yourself: http://strengthchecker-env.eba-zhysw8mp.eu-west-2.elasticbeanstalk.com/
 # StrengthChecker
 
 StrengthChecker is a webapplication which enables users to compare their Squat/Bench/Deadlift numbers to people of same sex, age group and weightclass
