@@ -2,7 +2,7 @@ import flask
 import pandas as pd
 import sqlite3
 
-app = flask.Flask(__name__)
+application = flask.Flask(__name__)
 
 def get_data_tables(sex:str) -> pd.DataFrame:
     '''
@@ -112,11 +112,11 @@ def calculate_results(form_data:dict) -> dict:
 
 
 
-@app.route('/')
+@application.route('/')
 def index():
     return flask.render_template('index.html')
 
-@app.route('/results', methods = ['POST', 'GET'])
+@application.route('/results', methods = ['POST', 'GET'])
 def results():
     if flask.request.method == 'GET':
         #user tries to access results URL directly
@@ -129,4 +129,4 @@ def results():
 
 
 if __name__=='__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    application.run(debug=True, host='0.0.0.0', port=5000)
