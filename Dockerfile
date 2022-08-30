@@ -15,5 +15,5 @@ COPY . /app
 
 # code to run webapplication
 ENTRYPOINT [ "python" ]
-CMD ["app.py" ]
+CMD ["application.py" ]
 
