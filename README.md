@@ -9,9 +9,9 @@ This service uses data from the OpenPowerlifting project, https://www.openpowerl
 
 ![](static/images/results_page.JPG)
 
-## Steps to run locally
-1. pip install -r requirements.txt
-2. python application.py
+## Steps to run locally with Pipenv
+1. pipenv install
+2. pipenv run python application.py
 
 ## Steps to run with Docker
 1. docker build -t strengthchecker_docker .
