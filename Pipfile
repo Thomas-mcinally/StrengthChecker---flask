@@ -17,6 +17,7 @@ pytz = "==2022.1"
 six = "==1.16.0"
 werkzeug = "==2.1.0"
 pytest = "*"
+black = "*"
 
 [dev-packages]
 
