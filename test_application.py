@@ -1,4 +1,4 @@
-from application import calculate_results
+from statistics import calculate_results
 
 
 def test_male():
