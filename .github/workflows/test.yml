@@ -20,7 +20,7 @@ jobs:
         with:
           python-version: "3.10"
           cache: "pipenv"
-      - name: Pipenv install 
+      - name: Pipenv install
         shell: bash
         run: pipenv install --dev
       - run: pipenv run pytest

@@ -1,4 +1,5 @@
-import csv, sqlite3
+import csv
+import sqlite3
 
 connection = sqlite3.connect("database.db")
 cur = connection.cursor()
