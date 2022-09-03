@@ -20,6 +20,10 @@ werkzeug = "==2.1.0"
 [dev-packages]
 pytest = "*"
 black = "*"
+pre-commit = "*"
 
 [requires]
 python_version = "3.10"
+
+[scripts]
+setup = "bash -c \"pre-commit install\""
