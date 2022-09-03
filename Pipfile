@@ -24,6 +24,7 @@ pre-commit = "*"
 autoflake = "*"
 flake8 = "*"
 yamllint = "*"
+mypy = "*"
 
 [requires]
 python_version = "3.10"
@@ -32,3 +33,4 @@ python_version = "3.10"
 setup = "bash -c \"pre-commit install\""
 format = "bash -c \"autoflake --remove-all-unused-imports -i -r . && black .\""
 lint = "bash -c \"flake8 . && yamllint -s .\""
+type-check = "bash -c \"mypy .\""
