@@ -6,9 +6,6 @@ on:
       - main
   pull_request:
 
-env:
-  PYTHONPATH: .
-
 jobs:
   test:
     runs-on: ubuntu-latest
