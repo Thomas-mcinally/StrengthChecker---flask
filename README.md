@@ -10,9 +10,9 @@ This service uses data from the OpenPowerlifting project, https://www.openpowerl
 ![](static/images/results_page.JPG)
 
 ## Steps to run locally with Pipenv
-1. pipenv install
-2. pipenv run python application.py
+1. `pipenv install`
+2. `pipenv run python application.py`
 
 ## Steps to run with Docker
-1. docker build -t strengthchecker_docker .
-2. docker run -p 5000:5000 -d strengthchecker_docker
+1. `docker build -t strengthchecker_docker .`
+2. `docker run -p 5000:5000 -d strengthchecker_docker`
