@@ -1,8 +1,9 @@
 # StrengthChecker
-
 StrengthChecker is a webapplication which enables users to compare their Squat/Bench/Deadlift numbers to people of same sex, age group and weightclass
 
 This service uses data from the OpenPowerlifting project, https://www.openpowerlifting.org.
+
+Test it yourself at https://cbn8cigz0g.execute-api.eu-west-2.amazonaws.com/production
 ## Preview of index and result pages
 
 ![](static/images/Home_page.JPG)
