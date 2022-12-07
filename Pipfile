@@ -16,6 +16,7 @@ python-dateutil = "==2.8.2"
 pytz = "==2022.1"
 six = "==1.16.0"
 werkzeug = "==2.1.0"
+zappa = "*"
 
 [dev-packages]
 pytest = "*"
@@ -27,7 +28,7 @@ yamllint = "*"
 mypy = "*"
 
 [requires]
-python_version = "3.10"
+python_version = "3.9"
 
 [scripts]
 setup = "bash -c \"pre-commit install\""
