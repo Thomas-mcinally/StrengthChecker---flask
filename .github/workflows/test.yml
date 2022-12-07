@@ -18,7 +18,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v3
         with:
-          python-version: "3.10"
+          python-version: "3.9"
           cache: "pipenv"
       - name: Pipenv install
         shell: bash
@@ -36,7 +36,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v3
         with:
-          python-version: "3.10"
+          python-version: "3.9"
           cache: "pipenv"
       - name: Pipenv install
         shell: bash
